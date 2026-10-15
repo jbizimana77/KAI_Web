@@ -40,7 +40,7 @@ const social = [
   { label: "GitHub", href: siteConfig.social.github, icon: GitHubIcon },
   { label: "X", href: siteConfig.social.x, icon: XIcon },
   { label: "YouTube", href: siteConfig.social.youtube, icon: YouTubeIcon },
-];
+].filter(({ href }) => href.startsWith("http"));
 
 export function Footer() {
   return (

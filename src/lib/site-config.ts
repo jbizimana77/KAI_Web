@@ -11,10 +11,10 @@ export const siteConfig = {
   location: "Kigali, Rwanda",
   email: "info@kaitconsultant.com",
   social: {
-    linkedin: "#",
-    github: "#",
-    x: "#",
-    youtube: "#",
+    linkedin: "",
+    github: "https://github.com/jbizimana77/KAI_Web",
+    x: "",
+    youtube: "",
   },
   founder: {
     name: "JMV Bizimana",

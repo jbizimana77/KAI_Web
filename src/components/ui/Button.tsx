@@ -8,6 +8,7 @@ type ButtonProps = {
   className?: string;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 const variants = {
@@ -28,10 +29,12 @@ export function Button({
   className,
   type = "button",
   onClick,
+  disabled = false,
 }: ButtonProps) {
   const classes = cn(
     "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-300",
     variants[variant],
+    disabled && "pointer-events-none opacity-60",
     className,
   );
 
@@ -44,7 +47,12 @@ export function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={classes}
+    >
       {children}
     </button>
   );
