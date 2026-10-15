@@ -7,8 +7,11 @@ export const siteConfig = {
     "KAI IT Consultant LTD helps businesses design, build, integrate and manage practical technology solutions — from custom software and IT infrastructure to AI-powered automation, data and cloud solutions.",
   description:
     "KAI IT Consultant LTD builds practical software, AI, cloud, data and IT solutions for businesses in Rwanda and beyond.",
-  url: "https://kaitconsultant.com",
+  // Free launch: name the Cloudflare Pages project `kaitconsultant` → this URL.
+  // After you buy a domain, change to e.g. https://kaitconsultant.com and redeploy.
+  url: "https://kaitconsultant.pages.dev",
   location: "Kigali, Rwanda",
+  // Until you have custom email, use your real Gmail here so mailto + Web3Forms work.
   email: "info@kaitconsultant.com",
   social: {
     linkedin: "",

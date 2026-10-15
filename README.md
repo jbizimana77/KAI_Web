@@ -68,7 +68,8 @@ Update company contact details, social links and founder info in `src/lib/site-c
 
 Connect repo: [github.com/jbizimana77/KAI_Web](https://github.com/jbizimana77/KAI_Web). Pushes to `main` redeploy automatically.
 
-Custom domain: add **kaitconsultant.com** in Pages → Custom domains (DNS on Cloudflare).
+**Free start:** Cloudflare project name **`kaitconsultant`** → `https://kaitconsultant.pages.dev`.  
+**Later:** buy **kaitconsultant.com** (or `.space`) and add Custom domains — see [DEPLOY.md](./DEPLOY.md).
 
 ## Repository
 

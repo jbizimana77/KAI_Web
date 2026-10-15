@@ -1,56 +1,59 @@
 # Deploy checklist — KAI IT Consultant website
 
-Use this once before and right after your first Cloudflare Pages deploy.
+## Phase 1 — Free ($0)
 
-## 1. Contact form (required before going live)
+Everything below costs nothing to start.
 
-1. Sign up at [web3forms.com](https://web3forms.com) with **info@kaitconsultant.com** (or your inbox).
-2. Copy your **access key**.
-3. **Local:** copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY`.
-4. **Cloudflare Pages:** Project → **Settings** → **Environment variables** → add  
-   `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` = your key (Production and Preview).
-5. Redeploy after saving the variable (Cloudflare rebuilds on the next push, or use **Retry deployment**).
-
-Test at `/contact/` after deploy.
-
-## 2. Cloudflare Pages (hosting)
+### 1. Cloudflare Pages (hosting)
 
 1. [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
 2. Repository: **jbizimana77/KAI_Web**.
-3. Build settings:
+3. **Project name:** `kaitconsultant` (gives **https://kaitconsultant.pages.dev** — good for search and sharing).
+4. Build settings:
 
    | Setting | Value |
    |---------|--------|
    | Production branch | `main` |
    | Build command | `npm run build` |
    | Build output directory | `out` |
-   | Node version | `20` (env var `NODE_VERSION` = `20`) |
+   | Environment variable | `NODE_VERSION` = `20` |
 
-4. Deploy. Default URL: `https://<project-name>.pages.dev`.
+5. Deploy and open your `*.pages.dev` URL.
 
-## 3. Domain (kaitconsultant.com)
+If the project name is different, update `url` in `src/lib/site-config.ts` to match, commit, and push.
 
-1. Register **kaitconsultant.com** (Cloudflare Registrar or any registrar).
-2. If the domain is not on Cloudflare yet, add the site to Cloudflare and update nameservers at your registrar.
-3. Pages project → **Custom domains** → add `kaitconsultant.com` and `www.kaitconsultant.com`.
-4. Follow Cloudflare’s DNS prompts (usually automatic if the zone is on Cloudflare).
+### 2. Contact form
 
-`src/lib/site-config.ts` already uses `https://kaitconsultant.com` for SEO (sitemap, Open Graph).
+1. Sign up at [web3forms.com](https://web3forms.com) with your **Gmail** (free — no domain needed).
+2. Copy your **access key**.
+3. Cloudflare Pages → **Settings** → **Environment variables** →  
+   `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` = your key (Production + Preview).
+4. Set `email` in `src/lib/site-config.ts` to the same Gmail so **mailto** links work until you have `info@yourdomain`.
+5. Redeploy and test **/contact/**.
 
-## 4. Email (optional, free)
+### 3. Be findable on Google (free)
 
-Cloudflare **Email Routing**: forward **info@kaitconsultant.com** → your Gmail/Outlook. No mailbox hosting required.
+- Use business name everywhere: **KAI IT Consultant LTD**, **Kigali, Rwanda**.
+- Create a free [Google Business Profile](https://business.google.com) and set website to your `pages.dev` URL.
+- Add the site link on GitHub repo **About** and LinkedIn when ready.
 
-## 5. After launch
+---
 
-- Submit sitemap in Google Search Console: `https://kaitconsultant.com/sitemap.xml`
-- Add real LinkedIn / X / YouTube URLs in `src/lib/site-config.ts` when you have them (GitHub is already set).
+## Phase 2 — Upgrade later (paid)
+
+When you have budget (~$10/year+):
+
+1. Buy a domain (e.g. **kaitconsultant.com** or **kaitconsultant.space**).
+2. Cloudflare Pages → **Custom domains** → attach the domain.
+3. In `src/lib/site-config.ts`, set `url` to `https://yourdomain.com` and `email` to `info@yourdomain.com`.
+4. Push to GitHub; Cloudflare redeploys.
+5. Optional: Cloudflare **Email Routing** to forward `info@` to Gmail.
+
+---
 
 ## Cost snapshot
 
-| Item | Typical cost |
-|------|----------------|
-| Cloudflare Pages | $0 |
-| Web3Forms (basic) | $0 |
-| Domain `.com` | ~$10–15 / year |
-| VPS | Not needed for this site |
+| Phase | Hosting | Domain | Contact form |
+|-------|---------|--------|--------------|
+| **1 — Free** | $0 (Pages) | $0 (`*.pages.dev`) | $0 (Web3Forms) |
+| **2 — Upgrade** | $0 (still Pages) | ~$10–15/yr (.com) or ~$1–7 yr 1 (.space) | $0 or paid tiers |
